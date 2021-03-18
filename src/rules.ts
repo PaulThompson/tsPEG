@@ -1,6 +1,6 @@
-import { atomType, preType } from "./types";
-import { ASTKinds, ATOM, MATCH, PREOP, PosInfo } from "./meta";
-import { Rule, Ruledef, assertValidRegex, escapeBackticks } from "./util";
+import { atomType, preType } from "./types.ts";
+import { ASTKinds, ATOM, MATCH, PREOP, PosInfo } from "./meta.ts";
+import { Rule, Ruledef, assertValidRegex, escapeBackticks } from "./util.ts";
 
 export function matchRule(expr: MATCH): string {
     // Check if special rule

@@ -1,14 +1,14 @@
-#!/usr/bin/env node
+import { SyntaxErrs, buildParser } from "./gen.ts";
+import { CheckError } from "./checks.ts";
 
-import * as fs from "fs";
-import * as yargs from "yargs";
-import { SyntaxErrs, buildParser } from "./gen";
-import { CheckError } from "./checks";
+import yargs from 'https://deno.land/x/yargs@v16.2.0-deno/deno.ts'
+import { Arguments } from 'https://deno.land/x/yargs@v16.2.0-deno/deno-types.ts'
 
 // TODO format syntax errors better
 
-yargs.command("$0 <grammar> <output_file>", "build parser from grammar",
-    _yargs => _yargs.options({
+yargs(Deno.args).command("$0 <grammar> <output_file>", "build parser from grammar",
+    // deno-lint-ignore no-explicit-any
+    (_yargs : any) => _yargs.options({
         "num-enums": {
             type: "boolean",
             default: false,
@@ -20,15 +20,16 @@ yargs.command("$0 <grammar> <output_file>", "build parser from grammar",
             desc: "Enable memoisation, get better performance for increased memory usage",
         },
     }),
-    argv => {
+
+    // deno-lint-ignore no-explicit-any
+    (argv : any) => {
         const grammarFile = argv.grammar as string;
         const outputFile = argv.output_file as string;
         try {
-            const inGram = fs.readFileSync(grammarFile, { encoding: "utf8" });
+            const inGram = Deno.readTextFileSync(grammarFile);
             const parser = buildParser(inGram, argv["num-enums"], argv["enable-memo"]);
-            fs.writeFileSync(outputFile, parser);
+            Deno.writeTextFileSync(outputFile, parser);
         } catch(err) {
-            process.exitCode = 1;
             if(err instanceof CheckError) {
                 console.error(err.message);
             } else if(err instanceof SyntaxErrs) {

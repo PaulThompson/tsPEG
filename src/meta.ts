@@ -450,8 +450,8 @@ export interface CODE_REC_$0_3 {
 export class Parser {
     private readonly input: string;
     private pos: PosInfo;
-    private negating: boolean = false;
-    private memoSafe: boolean = true;
+    private negating = false;
+    private memoSafe = true;
     constructor(input: string) {
         this.pos = {overallPos: 0, line: 1, offset: 0};
         this.input = input;
@@ -1675,7 +1675,7 @@ export class Parser {
     public mark(): PosInfo {
         return this.pos;
     }
-    private loop<T>(func: $$RuleType<T>, star: boolean = false): Nullable<T[]> {
+    private loop<T>(func: $$RuleType<T>, star = false): Nullable<T[]> {
         const mrk = this.mark();
         const res: T[] = [];
         for (;;) {
@@ -1816,6 +1816,8 @@ class ErrorTracker {
     private mxpos: PosInfo = {overallPos: -1, line: -1, offset: -1};
     private regexset: Set<string> = new Set();
     private pmatches: MatchAttempt[] = [];
+
+    // deno-lint-ignore no-explicit-any
     public record(pos: PosInfo, result: any, att: MatchAttempt) {
         if ((result === null) === att.negated)
             return;

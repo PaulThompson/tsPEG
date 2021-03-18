@@ -1,5 +1,5 @@
-import { ALT, ASTKinds, PosInfo } from "./meta";
-import { CheckError } from "./checks";
+import { ALT, ASTKinds, PosInfo } from "./meta.ts";
+import { CheckError } from "./checks.ts";
 
 export type Rule = ALT[];
 export type Grammar = Ruledef[];

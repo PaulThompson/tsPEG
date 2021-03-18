@@ -1,6 +1,6 @@
-import { Grammar, Rule, assertValidRegex, getRuleFromGram } from "./util";
-import { ASTKinds, ATOM, MATCH } from "./meta";
-import { CheckError } from "./checks";
+import { Grammar, Rule, assertValidRegex, getRuleFromGram } from "./util.ts";
+import { ASTKinds, ATOM, MATCH } from "./meta.ts";
+import { CheckError } from "./checks.ts";
 
 
 /*

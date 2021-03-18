@@ -1,4 +1,4 @@
-import { Block } from "./util";
+import { Block } from "./util.ts";
 
 export interface TemplateOpts {
     inputStr: string,
@@ -33,8 +33,8 @@ export function expandTemplate(opts: TemplateOpts): Block {
     [
         "private readonly input: string;",
         "private pos: PosInfo;",
-        "private negating: boolean = false;",
-        "private memoSafe: boolean = true;",
+        "private negating = false;",
+        "private memoSafe = true;",
         "constructor(input: string) {",
         [
             "this.pos = {overallPos: 0, line: 1, offset: 0};",

@@ -1,10 +1,10 @@
-import { ALT, ASTKinds, GRAM, MATCH, Parser, PosInfo, SyntaxErr }  from "./meta";
-import { expandTemplate } from "./template";
-import { Block, Grammar, Ruledef, altNames, flattenBlock, usesEOF, writeBlock } from "./util";
-import { BannedNamesChecker, Checker, NoRuleNameCollisionChecker, RulesExistChecker } from "./checks";
-import { matchType } from "./types";
-import { extractRules, matchRule } from "./rules";
-import { getRulesToMarkForBoundedRecursion } from "./leftrec";
+import { ALT, ASTKinds, GRAM, MATCH, Parser, PosInfo, SyntaxErr }  from "./meta.ts";
+import { expandTemplate } from "./template.ts";
+import { Block, Grammar, Ruledef, altNames, flattenBlock, usesEOF, writeBlock } from "./util.ts";
+import { BannedNamesChecker, Checker, NoRuleNameCollisionChecker, RulesExistChecker } from "./checks.ts";
+import { matchType } from "./types.ts";
+import { extractRules, matchRule } from "./rules.ts";
+import { getRulesToMarkForBoundedRecursion } from "./leftrec.ts";
 
 function hasAttrs(alt: ALT): boolean {
     return alt.attrs.length > 0;

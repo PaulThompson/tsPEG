@@ -1,5 +1,5 @@
-import { ASTKinds, PosInfo } from "./meta";
-import { Grammar, altNames } from "./util";
+import { ASTKinds, PosInfo } from "./meta.ts";
+import { Grammar, altNames } from "./util.ts";
 
 // TODO Support returning multiple CheckErrors
 
